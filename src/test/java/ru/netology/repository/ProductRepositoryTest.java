@@ -22,8 +22,6 @@ public class ProductRepositoryTest {
     Product smartphoneFive = new Smartphone(10, "Samsung Galaxy Z Flip3 ", 100_000, "Samsung");
 
 
-
-
     @BeforeEach
     public void setup() {
         repository.add(bookOne);
@@ -66,10 +64,8 @@ public class ProductRepositoryTest {
                 smartphoneFive};
         int id = 7;
         repository.removeId(id);
-       Assertions.assertArrayEquals(expected, repository.findAll());
+        Assertions.assertArrayEquals(expected, repository.findAll());
     }
-
-
 
 
     @Test

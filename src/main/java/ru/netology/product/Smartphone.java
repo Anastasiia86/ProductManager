@@ -1,7 +1,6 @@
 package ru.netology.product;
 
 
-
 public class Smartphone extends Product {
     protected String manufactured;
 
