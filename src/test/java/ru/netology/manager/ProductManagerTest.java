@@ -3,15 +3,12 @@ package ru.netology.manager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import ru.netology.product.Book;
 import ru.netology.product.Product;
 import ru.netology.product.Smartphone;
 import ru.netology.repository.ProductRepository;
 
-import static org.mockito.Mockito.doReturn;
+
 
 public class ProductManagerTest {
 
@@ -153,6 +150,5 @@ public class ProductManagerTest {
         Product[] actual = manager.searchBy(title);
         Assertions.assertArrayEquals(expected, actual);
     }
-
-
+    
 }
