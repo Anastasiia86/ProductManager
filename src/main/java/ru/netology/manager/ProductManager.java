@@ -27,7 +27,7 @@ public class ProductManager {
     }
 
 
-    public Product[] searchByTitle(String searchInput) {
+    public Product[] searchBy(String searchInput) {
         Product[] results = new Product[0];
         for (Product product : repository.findAll()) {
             if (matches(product, searchInput)) {

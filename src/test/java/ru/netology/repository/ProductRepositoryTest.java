@@ -36,19 +36,6 @@ public class ProductRepositoryTest {
         repository.add(smartphoneFive);
     }
 
-    @Test
-    public void shouldFindById() {
-        Product expected = bookFive;
-        int id = 5;
-        Assertions.assertEquals(expected, repository.findById(id));
-    }
-
-    @Test
-    public void shouldFindByIdFail() {
-        int id = 15;
-        Assertions.assertNull(repository.findById(id));
-    }
-
 
     @Test
     public void shouldRemoveId() {
