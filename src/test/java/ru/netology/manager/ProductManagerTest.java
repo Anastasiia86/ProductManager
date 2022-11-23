@@ -108,12 +108,14 @@ public class ProductManagerTest {
 
 
     @Test
-    public void shouldMatchesTrue() {
+    public void shouldMatchesTrue()
+    {
         Assertions.assertTrue(managerEmpty.matches(smartphoneOne, "iPhone 14"));
     }
 
     @Test
-    public void shouldMatchesFalse() {
+    public void shouldMatchesFalse()
+    {
         Assertions.assertFalse(managerEmpty.matches(smartphoneOne, "Apple"));
     }
 
@@ -150,5 +152,5 @@ public class ProductManagerTest {
         Product[] actual = manager.searchBy(title);
         Assertions.assertArrayEquals(expected, actual);
     }
-    
+
 }

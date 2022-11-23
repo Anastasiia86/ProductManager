@@ -2,6 +2,7 @@ package ru.netology.repository;
 
 
 import lombok.Data;
+import ru.netology.expection.NotFoundException;
 import ru.netology.product.Product;
 
 @Data
@@ -20,16 +21,27 @@ public class ProductRepository {
     }
 
     public void removeId(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException("Element with id: " + id + " not found");
+        }
         Product[] tmp = new Product[products.length - 1];
-        int indexTo = 0;
+        int i = 0;
         for (Product product : products) {
             if (product.getId() != id) {
-                tmp[indexTo] = product;
-                indexTo++;
+                tmp[i] = product;
+                i++;
             }
         }
         products = tmp;
 
+    }
+    public Product findById(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 
 
@@ -37,5 +49,6 @@ public class ProductRepository {
         return getProducts();
 
     }
+
 }
 

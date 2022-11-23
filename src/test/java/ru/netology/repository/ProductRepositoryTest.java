@@ -3,6 +3,7 @@ package ru.netology.repository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.expection.NotFoundException;
 import ru.netology.product.Book;
 import ru.netology.product.Product;
 import ru.netology.product.Smartphone;
@@ -36,6 +37,19 @@ public class ProductRepositoryTest {
         repository.add(smartphoneFive);
     }
 
+    @Test
+    void shouldFindByIdSuccess() {
+        Product expected = bookFive;
+        int id = 5;
+        Assertions.assertEquals(expected, repository.findById(id));
+    }
+
+    @Test
+    void shouldFindByIdFailed() {
+        int id = 200;
+        Assertions.assertNull(repository.findById(id));
+    }
+
 
     @Test
     public void shouldRemoveId() {
@@ -54,25 +68,12 @@ public class ProductRepositoryTest {
         Assertions.assertArrayEquals(expected, repository.findAll());
     }
 
-
     @Test
-    public void shouldAddProduct() {
-        Product bookSix = new Book(11, "Робинзон Крузо", 1500, "Даниель Дефо");
-        Product[] expected = new Product[]{
-                bookOne,
-                bookTwo,
-                bookThree,
-                bookFour,
-                bookFive,
-                smartphoneOne,
-                smartphoneTwo,
-                smartphoneThree,
-                smartphoneFour,
-                smartphoneFive,
-                bookSix};
-        repository.add(bookSix);
-        Assertions.assertArrayEquals(expected, repository.findAll());
+    void shouldRemoveIdFailed() {
+        int id = 15;
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repository.removeId(id);
+        });
     }
-
 
 }
